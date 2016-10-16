@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyBGEwAgcpE44yCKfaTqNr-4mOURkjyIWjE",
@@ -12,6 +12,11 @@ export const firebaseConfig = {
     databaseURL: "https://jacobshead-8a5fa.firebaseio.com",
     storageBucket: "jacobshead-8a5fa.appspot.com",
     messagingSenderId: "524114114965"
+}
+
+export const firebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Popup
 }
 
 @NgModule({
@@ -22,7 +27,7 @@ export const firebaseConfig = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
